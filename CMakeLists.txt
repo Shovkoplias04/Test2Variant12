@@ -4,4 +4,5 @@ project(Variant)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Variant
-        task1.cpp)
+        task3.cpp )
+#task3.cpp task2.cpp
