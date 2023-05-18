@@ -3,24 +3,22 @@
 
 using namespace std;
 
-int countWaysToTile(int n) {
-    vector<int> dp(n + 1);
 
-    // Базові випадки
-    dp[0] = 1;
-    dp[1] = 0;
-    dp[2] = 3;
+int u[31];
 
-    for (int i = 3; i <= n; i++) {
-        dp[i] = dp[i - 1] + 2 * dp[i - 2];
-    }
-
-    return dp[n];
-}
 
 int main() {
     vector<int> values;
     int n;
+
+    u[0] = 1;
+    u[2] = 3;
+
+    for (n = 4; n <= 30; n += 2) {
+
+        u[n] = 4 * u[n - 2] - u[n - 4];
+    }
+
 
     while (true) {
         cin >> n;
@@ -30,10 +28,11 @@ int main() {
         values.push_back(n);
     }
 
-    for (int n : values) {
-        int ways = countWaysToTile(n);
-        cout << ways << endl;
+    for (int i: values) {
+        cout << u[i] << endl;
     }
 
+
     return 0;
+
 }
